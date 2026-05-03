@@ -845,7 +845,7 @@ if (NOT TARGET test_all)
 endif()
 
 set(CUTLASS_INSTALL_TESTS ON CACHE BOOL "Install test executables")
-set(CUTLASS_TEST_EXECUTION_ENVIRONMENT "" CACHE BOOL "Environment in which to invoke unit test executables")
+set(CUTLASS_TEST_EXECUTION_ENVIRONMENT "" CACHE STRING "Environment in which to invoke unit test executables")
 
 set(CMAKE_TEST_INSTALL_PREFIX test CACHE STRING "Test root install location, relative to CMAKE_INSTALL_PREFIX.")
 set(CUTLASS_TEST_INSTALL_PREFIX ${CMAKE_TEST_INSTALL_PREFIX}/cutlass CACHE STRING "Test root install location, relative to CMAKE_INSTALL_PREFIX.")
