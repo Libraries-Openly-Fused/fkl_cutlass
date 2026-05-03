@@ -740,6 +740,16 @@ set(CUTLASS_TOOLS_UTIL_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tools/util/includ
 
 include_directories(${CUTLASS_INCLUDE_DIR})
 
+# FusedKernelLibrary submodule
+set(FKL_SUBMODULE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party/FusedKernelLibrary)
+set(FKL_INCLUDE_DIR ${FKL_SUBMODULE_DIR}/include CACHE PATH "FusedKernelLibrary Header Directory")
+target_include_directories(
+  CUTLASS
+  INTERFACE
+  $<BUILD_INTERFACE:${FKL_INCLUDE_DIR}>
+  $<INSTALL_INTERFACE:include>
+  )
+
 target_compile_features(CUTLASS INTERFACE cxx_std_11)
 
 if (NOT CUTLASS_NAMESPACE STREQUAL "cutlass")
@@ -778,6 +788,7 @@ install(
   DIRECTORY
   ${CUTLASS_INCLUDE_DIR}/
   ${CMAKE_CURRENT_BINARY_DIR}/include/
+  ${FKL_INCLUDE_DIR}/
   DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
   )
 
